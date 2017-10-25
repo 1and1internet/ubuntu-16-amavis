@@ -3,7 +3,7 @@
 set -eu
 
 #run clamav setup
-#freshclam
+freshclam
 
 if [[ $ENABLE_RAZOR_AND_PYZOR -eq "1" ]]; then
   su -c "razor-admin -create" amavis
@@ -12,4 +12,4 @@ if [[ $ENABLE_RAZOR_AND_PYZOR -eq "1" ]]; then
 fi
 
 #update spamassassin
-#sa-update
+sa-update
