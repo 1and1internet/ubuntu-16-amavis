@@ -1,0 +1,12 @@
+version: '2'
+services:
+  amavisd:
+    hostname: amavisd
+    container_name: amavisd
+    build: .
+    image: docker-ubuntu-amavisd
+    ports:
+      - "10024:10024"
+#    user: "1000000"
+    environment:
+      - "SUPERVISORD_LOGLEVEL=debug"

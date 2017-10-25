@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eu
+
+#run clamav setup
+#freshclam
+
+if [[ $ENABLE_RAZOR_AND_PYZOR -eq "1" ]]; then
+  su -c "razor-admin -create" amavis
+  su -c "razor-admin -register" amavis
+  su -c "pyzor discover" amavis
+fi
+
+#update spamassassin
+#sa-update
