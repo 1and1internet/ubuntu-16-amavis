@@ -13,3 +13,5 @@ fi
 
 #update spamassassin
 sa-update
+
+sed -i -e "s/SMTP_IP/$SMTP_IP/g" /etc/amavis/conf.d/50-user
