@@ -1,7 +1,12 @@
 use strict;
 
+my $smtp_ip = $ENV{'SMTP_IP'};
+
 $inet_socket_bind = '0.0.0.0';
 @inet_acl = qw(0.0.0.0/0);
+
+chomp($notify_method  = 'smtp:[$smtp_ip]:8026');
+chomp($forward_method = 'smtp:[$smtp_ip]:8026');
 
 #
 # Place your configuration directives here.  They will override those in
