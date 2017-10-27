@@ -3,7 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 COPY files /
 RUN \
   apt-get update && \
-  apt-get -o Dpkg::Options::=--force-confdef -y install gettext-base amavisd-new spamassassin clamav-daemon libnet-dns-perl libmail-spf-perl pyzor razor arj bzip2 cabextract cpio file gzip lhasa nomarch pax unrar-free unzip zip zoo && \
+  apt-get -o Dpkg::Options::=--force-confdef -y install gettext-base amavisd-new spamassassin clamav clamav-daemon libauthen-sasl-perl libdbi-perl libnet-dns-perl libmail-dkim-perl libnet-ldap-perl libsnmp-perl libmail-spf-perl pyzor razor arj bzip2 cabextract cpio file gzip lhasa nomarch pax unrar-free unzip zip zoo lzop p7zip rpm altermime ripole lrzip rsyslog && \
   adduser clamav amavis && \
   adduser amavis clamav && \
   apt-get -y clean && \
@@ -12,5 +12,6 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   chmod -R 0755 /hooks
 ENV DOMAIN=example.com \
-    ENABLE_RAZOR_AND_PYZOR=0
+    ENABLE_RAZOR_AND_PYZOR=0 \
+    SMTP_IP=127.0.0.1
 EXPOSE 10024
