@@ -12,6 +12,6 @@ if [[ $ENABLE_RAZOR_AND_PYZOR -eq "1" ]]; then
 fi
 
 #update spamassassin
-sa-update
+su -c sa-update debian-spamd
 
 sed -i -e "s/SMTP_IP/$SMTP_IP/g" /etc/amavis/conf.d/50-user

@@ -9,6 +9,11 @@ RUN \
   apt-get -y clean && \
   mkdir /var/run/clamav/ && \
   chown clamav:clamav /var/run/clamav/ && \
+  sed -i -e 's/AllowSupplementaryGroups false/AllowSupplementaryGroups true/g' /etc/clamav/clamd.conf && \
+  sed -i -e 's/Foreground false/Foreground true/g' /etc/clamav/clamd.conf && \
+  chmod +x /usr/sbin/updater.sh && \
+  chown -R debian-spamd:debian-spamd /etc/spamassassin/ && \
+  chown -R debian-spamd:debian-spamd /var/lib/spamassassin/ && \
   rm -rf /var/lib/apt/lists/* && \
   chmod -R 0755 /hooks
 ENV DOMAIN=example.com \
