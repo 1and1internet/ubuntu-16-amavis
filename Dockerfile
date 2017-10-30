@@ -11,7 +11,8 @@ RUN \
   chown clamav:clamav /var/run/clamav/ && \
   sed -i -e 's/AllowSupplementaryGroups false/AllowSupplementaryGroups true/g' /etc/clamav/clamd.conf && \
   sed -i -e 's/Foreground false/Foreground true/g' /etc/clamav/clamd.conf && \
-  chmod +x /usr/sbin/updater.sh && \
+  chmod 0444 /etc/logrotate.d/logrotate && \
+  chmod +x /usr/sbin/updater.sh /usr/local/bin/logrotated.sh && \
   chown -R debian-spamd:debian-spamd /etc/spamassassin/ && \
   chown -R debian-spamd:debian-spamd /var/lib/spamassassin/ && \
   rm -rf /var/lib/apt/lists/* && \

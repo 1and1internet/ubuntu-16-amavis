@@ -1,0 +1,35 @@
+/var/log/auth.log
+/var/log/syslog
+/var/log/supervisor/supervisord.log
+/var/log/mail.log
+{
+   su root syslog
+   rotate 7
+   daily
+   missingok
+   notifempty
+   delaycompress
+   compress
+   copytruncate
+   dateext
+   postrotate
+    kill -1 $(cat /var/run/rsyslogd.pid)
+   endscript
+}
+
+/var/log/clamav/clamav.log
+/var/log/clamav/freshclam.log
+{
+   su clamav adm
+   rotate 7
+   daily
+   missingok
+   notifempty
+   delaycompress
+   compress
+   copytruncate
+   dateext
+   postrotate
+    kill -1 $(cat /var/run/rsyslogd.pid)
+   endscript
+}
