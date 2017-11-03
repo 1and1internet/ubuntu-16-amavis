@@ -2,6 +2,7 @@ use strict;
 
 $inet_socket_bind = '0.0.0.0';
 @inet_acl = qw(0.0.0.0/0);
+$sa_local_tests_only = 1;
 
 chomp($notify_method  = 'smtp:SMTP_IP:8026');
 chomp($forward_method = 'smtp:SMTP_IP:8026');
