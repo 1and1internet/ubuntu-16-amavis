@@ -38,6 +38,8 @@ RUN \
   chown -R debian-spamd:debian-spamd /var/lib/spamassassin/ && \
   rm -rf /var/lib/apt/lists/* && \
   chmod -R 0755 /hooks
+RUN \
+  sed -i "s/# .myhostname.*/\$myhostname = \"amavis\" . \$ENV{'DOMAIN'};/" /etc/amavisd.conf
 ENV DOMAIN=example.com \
     ENABLE_RAZOR_AND_PYZOR=0 \
     SMTP_IP=127.0.0.1
